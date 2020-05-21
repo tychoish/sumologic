@@ -51,7 +51,7 @@ func (u *httpUploader) Send(input []byte, name string) (err error) {
 	client.Timeout = 60 * time.Second
 
 	if len(input) > GzipThreshold {
-		log.Logf("Data over threshold, compressing (%s bytes)", len(input))
+		log.Logf("Data over threshold, compressing (%d bytes)", len(input))
 		w := gzip.NewWriter(buf)
 		n, err := w.Write(input)
 		if err != nil {
